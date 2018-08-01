@@ -23,13 +23,14 @@ namespace api.Controllers
     using api.Models;
     ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
     builder.EntitySet<Poliza>("Polizas");
+    builder.EntitySet<ClientesXpoliza>("ClientesXpolizas"); 
     builder.EntitySet<PolizasXTipos>("PolizasXTipos"); 
     builder.EntitySet<Riesgo>("Riesgoes"); 
     config.Routes.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());
     */
     public class PolizasController : ODataController
     {
-        private SeguroModel db = new SeguroModel();
+        private ModelSeguros db = new ModelSeguros();
 
         // GET: odata/Polizas
         [EnableQuery]
@@ -147,6 +148,13 @@ namespace api.Controllers
             await db.SaveChangesAsync();
 
             return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        // GET: odata/Polizas(5)/ClientesXpolizas
+        [EnableQuery]
+        public IQueryable<ClientesXpoliza> GetClientesXpolizas([FromODataUri] int key)
+        {
+            return db.Polizas.Where(m => m.idPoliza == key).SelectMany(m => m.ClientesXpolizas);
         }
 
         // GET: odata/Polizas(5)/PolizasXTipos
