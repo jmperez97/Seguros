@@ -95,3 +95,9 @@ C:\GAP\Seguros\Seguros\Seguros\bin\EntityFramework.dll
 C:\GAP\Seguros\Seguros\Seguros\bin\EntityFramework.SqlServer.dll
 C:\GAP\Seguros\Seguros\Seguros\bin\EntityFramework.xml
 C:\GAP\Seguros\Seguros\Seguros\bin\EntityFramework.SqlServer.xml
+C:\GAP\Seguros\Seguros\Seguros\bin\System.Net.Http.Formatting.dll
+C:\GAP\Seguros\Seguros\Seguros\bin\System.Web.Http.dll
+C:\GAP\Seguros\Seguros\Seguros\bin\System.Web.Http.WebHost.dll
+C:\GAP\Seguros\Seguros\Seguros\bin\System.Net.Http.Formatting.xml
+C:\GAP\Seguros\Seguros\Seguros\bin\System.Web.Http.xml
+C:\GAP\Seguros\Seguros\Seguros\bin\System.Web.Http.WebHost.xml

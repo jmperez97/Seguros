@@ -1,0 +1,72 @@
+﻿@model Seguros.Models.usuario
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+
+
+@using (Html.BeginForm())
+{
+	@Html.AntiForgeryToken()
+
+	<div class="form-horizontal">
+		<h4>usuario</h4>
+		<hr />
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+		<div class="form-group">
+			@Html.LabelFor(model => model.login, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.login, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.login, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				<input class="form-control text-box single-line valid" id="password" name="password" type="pas" value="" aria-invalid="false">
+				@Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-md-12">
+				<button type="button" id="BtnLoguin" class="btn">Loguin</button>
+			</div>
+		</div>
+	</div>
+}
+@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+	<script>
+		$('#BtnLoguin').click(function () { //On click of your button
+
+
+			var name = $('#nombre').val();
+			var desc = $('#descripcion').val();
+		
+
+			var JSONObject = { // Create JSON object to pass through AJAX
+				nombre: name,
+				descripcion: desc,
+				
+
+			};
+			debugger;
+			$.ajax({ //Do an ajax post to the controller
+				type: 'GET',
+				url: 'SingUp?usuario=' + $('#login').val() + '&pass=' + $('#password').val(),
+				data: null,
+				async: false,
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+				success: function (result) {
+					console.log("Hola")
+				},
+				error: function (err) {
+					debugger;
+					console.log(err)
+				},
+			});
+		});
+	</script>
+}
