@@ -91,3 +91,7 @@ C:\GAP\Seguros\Seguros\Seguros\obj\Debug\Seguros.csproj.CoreCompileInputs.cache
 C:\GAP\Seguros\Seguros\Seguros\obj\Debug\Seguros.csproj.CopyComplete
 C:\GAP\Seguros\Seguros\Seguros\obj\Debug\Seguros.dll
 C:\GAP\Seguros\Seguros\Seguros\obj\Debug\Seguros.pdb
+C:\GAP\Seguros\Seguros\Seguros\bin\EntityFramework.dll
+C:\GAP\Seguros\Seguros\Seguros\bin\EntityFramework.SqlServer.dll
+C:\GAP\Seguros\Seguros\Seguros\bin\EntityFramework.xml
+C:\GAP\Seguros\Seguros\Seguros\bin\EntityFramework.SqlServer.xml
