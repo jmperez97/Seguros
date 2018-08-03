@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -32,24 +34,25 @@ namespace Seguros.Controllers
 		// POST: Loguin/Create
 		[HttpGet]
 		public async Task<ActionResult> SingUp(string usuario, string pass)
-        {
-            
+		{
+			// var me= new  HttpRequestMessage()
 
-				var val = validar(usuario,pass);
-				if (val)
-				{
-
+			var val = validar(usuario, pass);
+			if (val)
+			{
+				//HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, val);
+				//return RedirectToAction("Polizas", "Polizas");
 				return RedirectToAction("Polizas", "Polizas");
 			}
-				else
-				{
-					return Loguin();
-				}
+			else
+			{
+				return Loguin();
+			}
 
-			
-        }
 
-       
+		}
+
+
 		public static bool validar(string usuario, string pass)
 		{
 			try

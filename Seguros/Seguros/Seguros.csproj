@@ -224,6 +224,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Polizas\Polizas.cshtml" />
     <Content Include="Views\Loguin\Loguin.cshtml" />
+    <Content Include="Views\Polizas\ListarPolizas.cshtml" />
+    <Content Include="Views\Polizas\EditarPoliza.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

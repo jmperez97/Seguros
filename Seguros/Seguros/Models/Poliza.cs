@@ -26,17 +26,17 @@ namespace Seguros.Models
 
         public int? periodo { get; set; }
 
-        public int? idRiesgo { get; set; }
+        public int idRiesgo { get; set; }
 
         [Column(TypeName = "money")]
         public decimal? precio { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ClientesXpoliza> ClientesXpolizas { get; set; }
+        public  ICollection<ClientesXpoliza> ClientesXpolizas { get; set; }
 
-        public virtual Riesgo Riesgo { get; set; }
+        public  Riesgo Riesgo { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PolizasXTipos> PolizasXTipos { get; set; }
+        public  ICollection<PolizasXTipos> PolizasXTipos { get; set; }
     }
 }

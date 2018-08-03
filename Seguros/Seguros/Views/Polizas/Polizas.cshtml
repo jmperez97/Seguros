@@ -64,11 +64,12 @@
 				<button type="button" id="BtnCrear" class="btn">Crear Poliza</button>
 			</div>
         </div>
+
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "ListarPolizas")
 </div>
 
 @section Scripts {
@@ -97,7 +98,9 @@
 				data: JSON.stringify(JSONObject),
 				contentType: "application/json; charset=utf-8",
 				dataType: "json"
-			});
+		});
+		@Html.ActionLink( "Polizas", "ListarPolizas");
+		return View("ListarPolizas");
 		});
 	</script>
 }

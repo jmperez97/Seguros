@@ -17,7 +17,7 @@ namespace Seguros.Controllers
 		{
 			ViewBag.Message = "Your application description page.";
 
-			return View();
+			return RedirectToAction("Loguin", "Loguin");
 		}
 
 		public ActionResult Contact()

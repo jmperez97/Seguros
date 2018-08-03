@@ -3,7 +3,9 @@
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/jqueryval")
 
-
+@{
+	ViewBag.Title = "Home Page";
+}
 @using (Html.BeginForm())
 {
 	@Html.AntiForgeryToken()
@@ -43,12 +45,12 @@
 
 			var name = $('#nombre').val();
 			var desc = $('#descripcion').val();
-		
+
 
 			var JSONObject = { // Create JSON object to pass through AJAX
 				nombre: name,
 				descripcion: desc,
-				
+
 
 			};
 			debugger;
@@ -56,15 +58,16 @@
 				type: 'GET',
 				url: 'SingUp?usuario=' + $('#login').val() + '&pass=' + $('#password').val(),
 				data: null,
-				async: false,
 				contentType: "application/json; charset=utf-8",
 				dataType: "json",
 				success: function (result) {
-					console.log("Hola")
+					window.location.href = "http://localhost:10467/Polizas/Polizas"
 				},
 				error: function (err) {
 					debugger;
-					console.log(err)
+					if (err.statusText == "OK") {
+						window.location.href = "http://localhost:10467/Polizas/Polizas"
+					}
 				},
 			});
 		});

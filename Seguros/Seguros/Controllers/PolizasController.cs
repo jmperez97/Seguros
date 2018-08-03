@@ -17,15 +17,37 @@ namespace Seguros.Controllers
         // GET: Polizas
         public ActionResult Polizas()
         {
-            return View();
+			ViewBag.Message = "Test";
+			return View();
         }
+		public ActionResult ListarPolizas()
+		{
+
+			
+			return View(Listar());
+		}
+
+		public ActionResult EditarPoliza()
+		{
+
+
+			return View();
+		}
+		private Model1 db = new Model1();
 		[HttpPost]
 		public async Task<ActionResult> Crear(Poliza cd)
 		{
 			HttpResponseMessage response = new HttpResponseMessage();
 			try
 			{
-		
+				using (var db = new Model1())
+				{
+				
+						db.Polizas.Add(cd);
+						db.SaveChanges();		
+					
+					
+				}
 			}
 			catch (Exception ex)
 			{
@@ -39,5 +61,25 @@ namespace Seguros.Controllers
 			client.BaseAddress = new Uri(ConfigurationManager.AppSettings["ApiUrl"]);
 			return client;
 		}
+		public  IEnumerable<Poliza> Listar()
+		{
+			HttpResponseMessage response = new HttpResponseMessage();
+			try
+			{
+				using (var db = new Model1())
+				{
+
+					return db.Polizas.ToList();
+
+
+				}
+			}
+			catch (Exception ex)
+			{
+				throw;
+			}
+			
+		}
+
 	}
 }
