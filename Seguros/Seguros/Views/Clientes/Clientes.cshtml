@@ -1,0 +1,82 @@
+﻿@model Seguros.Models.Cliente
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+
+
+@using (Html.BeginForm())
+{
+	@Html.AntiForgeryToken()
+	@Html.ActionLink("Listar Clientes", "ListarCliente")
+
+	<div class="form-horizontal">
+		<h4>Cliente</h4>
+		<hr />
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+		<div class="form-group">
+			@Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.Cedula, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Cedula, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Cedula, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.Telefono, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-md-12">
+				<button type="button" id="BtnCrear" class="btn">Crear Cliente</button>
+			</div>
+		</div>
+
+	</div>
+}
+
+<div>
+	@Html.ActionLink("Back to List", "ListarPolizas")
+</div>
+
+@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+	<script>
+		$('#BtnCrear').click(function () { //On click of your button
+
+			var name = $('#Nombre').val();
+			var ced = $('#Cedula').val();
+			var cel = $('#Telefono').val();
+
+			var JSONObject = { // Create JSON object to pass through AJAX
+				Cedula: ced,
+				Nombre: name,
+				Telefono: cel
+
+			};
+
+			$.ajax({ //Do an ajax post to the controller
+				type: 'POST',
+				url: 'Crear',
+				data: JSON.stringify(JSONObject),
+				contentType: "application/json; charset=utf-8",
+				dataType: "json"
+			});
+
+			return View("ListarPolizas");
+		});
+	</script>
+}
+
+

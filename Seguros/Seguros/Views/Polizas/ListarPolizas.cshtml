@@ -1,7 +1,8 @@
 ﻿@model IEnumerable<Seguros.Models.Poliza>
 
 <p>
-	@Html.ActionLink("Create New", "Create")
+	@Html.ActionLink("Crear poliza", "Polizas")
+	@Html.ActionLink("Crear cliente", "Clientes", "Clientes")
 </p>
 <table class="table">
 	<tr>
@@ -48,16 +49,20 @@
 		<td>
 			@Html.DisplayFor(modelItem => item.precio)
 		</td>
-		@*<td>
-			<button id="Btneditar" onclick="editarPoliza">Editar</button>|
-			@Html.ActionLink("Details", "Details", new { id = item.idPoliza }) |
-			@Html.ActionLink("Delete", "Delete", new { id = item.idPoliza })
-		</td>*@
+		<td>
+			@*<button id="Btneditar" onclick="editarPoliza" >Editar</button>|*@
+			@Html.ActionLink("Polizas", "EditarPoliza", new { id = item.idPoliza }) 
+
+			<input type="radio" name="name" value=""  onchange="edit(modelItem => item.idPoliza)"/>
+	
+			@Html.RadioButton("editar", new { id = item.idPoliza })
+			@*@Html.ActionLink("Delete", "Delete", new { id = item.idPoliza })*@
+		</td>
 	</tr>
 	}
 
 </table>
-<form>
+@*<form>
 	<div class="form-group">
 		<label for="idPoliza">Nombre</label>
 		<input type="text" class="form-control" disabled id="idPoliza" placeholder="idPoliza">
@@ -86,17 +91,31 @@
 	</div>
 
 	<button id="BtnGuardar" class="btn btn-primary">Guardar</button>
-</form>
+</form>*@
 
 @section Scripts {
 	@Scripts.Render("~/bundles/jqueryval")
 	<script>
+		//$('#editar').click(function () {
+		//	if ($(this).is(':checked')) {  // or $(this).prop('checked');
+		//		alert("checked");
+		//	}
+		//});
 
-		$("td").click(function () {
-			debugger;
+		function edit(id)
+		{
 
-			$("#idPoliza").append($(this).closest("tr").find(".tdPoliza").text());       // Outputs the answer
-		});
+			alert(id)
+		}
+
+		//$("td").click(function () {
+		//	debugger;
+		//	var $item = $(this).closest("tr")   // Finds the closest row <tr> 
+		//		.find(".tdPoliza")     // Gets a descendent with class="nr"
+		//		.text();         // Retrieves the text within <td>
+
+		//	$("#idPoliza").append($(this).closest("tr").find(".tdPoliza").text());       // Outputs the answer
+		//});
 
 
 		//$('td').click(function () {

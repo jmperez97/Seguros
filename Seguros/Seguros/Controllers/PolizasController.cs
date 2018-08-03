@@ -27,11 +27,16 @@ namespace Seguros.Controllers
 			return View(Listar());
 		}
 
-		public ActionResult EditarPoliza()
+		public ActionResult Editar(int id)
 		{
 
 
-			return View();
+			return View(Listar());
+		}
+
+		public ActionResult EditarPoliza(int id)
+		{			
+			return View(ConsultarPoliza(id));
 		}
 		private Model1 db = new Model1();
 		[HttpPost]
@@ -80,6 +85,29 @@ namespace Seguros.Controllers
 			}
 			
 		}
+		public Poliza ConsultarPoliza(int id)
+		{
+			var pol = new Poliza();
+			HttpResponseMessage response = new HttpResponseMessage();
+			try
+			{
+				using (var db = new Model1())
+				{
+
+					var tem = db.Polizas.ToList().Where(x => x.idPoliza == id).ToList();
+
+					return tem.FirstOrDefault();
+
+
+				}
+			}
+			catch (Exception ex)
+			{
+				throw;
+			}
+
+		}
+
 
 	}
 }
