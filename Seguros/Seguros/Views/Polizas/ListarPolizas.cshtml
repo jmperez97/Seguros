@@ -51,81 +51,11 @@
 		</td>
 		<td>
 			@*<button id="Btneditar" onclick="editarPoliza" >Editar</button>|*@
-			@Html.ActionLink("Polizas", "EditarPoliza", new { id = item.idPoliza }) 
+			@Html.ActionLink("Editar", "EditarPoliza", new { id = item.idPoliza }) 
 
-			<input type="radio" name="name" value=""  onchange="edit(modelItem => item.idPoliza)"/>
-	
-			@Html.RadioButton("editar", new { id = item.idPoliza })
-			@*@Html.ActionLink("Delete", "Delete", new { id = item.idPoliza })*@
+			
 		</td>
 	</tr>
 	}
 
 </table>
-@*<form>
-	<div class="form-group">
-		<label for="idPoliza">Nombre</label>
-		<input type="text" class="form-control" disabled id="idPoliza" placeholder="idPoliza">
-
-	</div>
-
-	<div class="form-group">
-		<label for="nombre">Nombre</label>
-		<input type="text" class="form-control" id="nombre" placeholder="nombre">
-
-	</div>
-	<div class="form-group">
-		<label for="precio">Precio</label>
-		<input type="number" class="form-control" id="precio" placeholder="precio">
-
-	</div>
-	<div class="form-group">
-		<label for="periodo">Periodo</label>
-		<input type="number" class="form-control" id="periodo" placeholder="periodo">
-
-	</div>
-	<div class="form-group">
-		<label for="descripcion">Descripción</label>
-		<input type="text" class="form-control" id="descripcion" placeholder="descripción">
-
-	</div>
-
-	<button id="BtnGuardar" class="btn btn-primary">Guardar</button>
-</form>*@
-
-@section Scripts {
-	@Scripts.Render("~/bundles/jqueryval")
-	<script>
-		//$('#editar').click(function () {
-		//	if ($(this).is(':checked')) {  // or $(this).prop('checked');
-		//		alert("checked");
-		//	}
-		//});
-
-		function edit(id)
-		{
-
-			alert(id)
-		}
-
-		//$("td").click(function () {
-		//	debugger;
-		//	var $item = $(this).closest("tr")   // Finds the closest row <tr> 
-		//		.find(".tdPoliza")     // Gets a descendent with class="nr"
-		//		.text();         // Retrieves the text within <td>
-
-		//	$("#idPoliza").append($(this).closest("tr").find(".tdPoliza").text());       // Outputs the answer
-		//});
-
-
-		//$('td').click(function () {
-		//	$('#idPoliza').val($('#tdPoliza').html().trim());
-
-		//})
-
-		function editarPoliza(e)
-		{
-			console.log(e);
-		}
-		</script>
-	}

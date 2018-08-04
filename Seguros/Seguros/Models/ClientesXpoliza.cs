@@ -21,8 +21,8 @@ namespace Seguros.Models
 
         public bool? estado { get; set; }
 
-        public virtual Cliente Cliente { get; set; }
+        public  Cliente Cliente { get; set; }
 
-        public virtual Poliza Poliza { get; set; }
+        public  Poliza Poliza { get; set; }
     }
 }

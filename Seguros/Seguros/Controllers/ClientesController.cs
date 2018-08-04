@@ -13,7 +13,7 @@ namespace Seguros.Controllers
 {
     public class ClientesController : Controller
     {
-        private Model1 db = new Model1();
+		public DataAccess.DataAccess data = new DataAccess.DataAccess();
 
 		public ActionResult Clientes()
 		{
@@ -27,18 +27,33 @@ namespace Seguros.Controllers
 
 			return View(Listar());
 		}
-		public IEnumerable<Cliente> Listar()
+		public ActionResult EditarCliente(int id)
 		{
+			return View(ConsultarCliente(id));
+		}
+
+
+		public Cliente ConsultarCliente(int id)
+		{
+			var pol = new Cliente();
 			HttpResponseMessage response = new HttpResponseMessage();
 			try
 			{
-				using (var db = new Model1())
-				{
+				return data.ConsultarCliente(id).FirstOrDefault();
+			}
+			catch (Exception ex)
+			{
+				throw;
+			}
 
-					return db.Clientes.ToList();
+		}
 
+		public IEnumerable<Cliente> Listar()
+		{
 
-				}
+			try
+			{
+				return data.ListarClientes();
 			}
 			catch (Exception ex)
 			{
@@ -53,20 +68,47 @@ namespace Seguros.Controllers
 			HttpResponseMessage response = new HttpResponseMessage();
 			try
 			{
-				using (var db = new Model1())
-				{
+				
 
-					db.Clientes.Add(cd);
-					db.SaveChanges();
+					data.CrearCliente(cd);
 
 
-				}
+				
 			}
 			catch (Exception ex)
 			{
 				System.Console.WriteLine(ex.Message);
 			}
 			return View(response);
+		}
+		[HttpPost]
+		public async Task<ActionResult> EditarCL(Cliente cd)
+		{
+
+			try
+			{
+				data.EditarCliente(cd);
+				return View();
+
+			}
+			catch (Exception ex)
+			{
+				throw;
+			}
+		}
+		public async Task<ActionResult> EditarPoliza(Poliza cd)
+		{
+
+			try
+			{
+				data.EditarPoliza(cd);
+				return View();
+
+			}
+			catch (Exception ex)
+			{
+				throw;
+			}
 		}
 
 	}

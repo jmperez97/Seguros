@@ -9,12 +9,14 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using Seguros.Models;
+using Seguros.DataAccess;
 
 namespace Seguros.Controllers
 {
     public class PolizasController : Controller
     {
-        // GET: Polizas
+		// GET: Polizas
+		public DataAccess.DataAccess data = new DataAccess.DataAccess();
         public ActionResult Polizas()
         {
 			ViewBag.Message = "Test";
@@ -24,34 +26,31 @@ namespace Seguros.Controllers
 		{
 
 			
-			return View(Listar());
+			return View(data.ListarPolizas());
 		}
 
 		public ActionResult Editar(int id)
 		{
 
 
-			return View(Listar());
+			return View(data.ListarPolizas());
 		}
 
 		public ActionResult EditarPoliza(int id)
 		{			
 			return View(ConsultarPoliza(id));
 		}
-		private Model1 db = new Model1();
+
 		[HttpPost]
 		public async Task<ActionResult> Crear(Poliza cd)
 		{
 			HttpResponseMessage response = new HttpResponseMessage();
 			try
 			{
-				using (var db = new Model1())
+			var res=	data.GuardarPoliza(cd);
+				if (res)
 				{
-				
-						db.Polizas.Add(cd);
-						db.SaveChanges();		
-					
-					
+					return RedirectToAction("Poliza", "ListarPolizas", new { area = "ListarPolizas" });
 				}
 			}
 			catch (Exception ex)
@@ -66,46 +65,35 @@ namespace Seguros.Controllers
 			client.BaseAddress = new Uri(ConfigurationManager.AppSettings["ApiUrl"]);
 			return client;
 		}
-		public  IEnumerable<Poliza> Listar()
-		{
-			HttpResponseMessage response = new HttpResponseMessage();
-			try
-			{
-				using (var db = new Model1())
-				{
 
-					return db.Polizas.ToList();
-
-
-				}
-			}
-			catch (Exception ex)
-			{
-				throw;
-			}
-			
-		}
 		public Poliza ConsultarPoliza(int id)
 		{
 			var pol = new Poliza();
 			HttpResponseMessage response = new HttpResponseMessage();
 			try
 			{
-				using (var db = new Model1())
-				{
-
-					var tem = db.Polizas.ToList().Where(x => x.idPoliza == id).ToList();
-
-					return tem.FirstOrDefault();
-
-
-				}
+				return data.ConsultarPoliza(id).FirstOrDefault();
 			}
 			catch (Exception ex)
 			{
 				throw;
 			}
 
+		}
+		[HttpPost]
+		public async Task<ActionResult> EditarPoliza(Poliza cd)
+		{
+
+			try
+			{
+				 data.EditarPoliza(cd);
+				return View();
+				
+			}
+			catch (Exception ex)
+			{
+				throw;
+			}	
 		}
 
 
