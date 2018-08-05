@@ -69,6 +69,25 @@ namespace Seguros.DataAccess
 			}
 
 		}
+		public IEnumerable<ClientesXpoliza> ListarClientesXPoliza()
+		{
+
+			try
+			{
+				using (var db = new Model1())
+				{
+
+					return db.ClientesXpolizas.ToList().Where(x => x.estado == true).ToList();
+
+
+				}
+			}
+			catch (Exception ex)
+			{
+				throw;
+			}
+
+		}
 		public IEnumerable<Poliza> ConsultarPoliza(int id)
 		{
 
@@ -112,7 +131,26 @@ namespace Seguros.DataAccess
 
 		}
 
+		public bool crearClientesXpoliza(ClientesXpoliza cd)
+		{
 
+			try
+			{
+				using (var db = new Model1())
+				{
+
+					db.ClientesXpolizas.Add(cd);
+					db.SaveChanges();
+
+					return true;
+				}
+			}
+			catch (Exception ex)
+			{
+				return false;
+			}
+
+		}
 		public  bool EditarPoliza(Poliza cd)
 		{
 			try
@@ -138,6 +176,23 @@ namespace Seguros.DataAccess
 				{
 					var temp = db.Clientes.ToList().Where(x => x.idCliente == cd.idCliente).FirstOrDefault();
 					temp = cd;
+					db.SaveChanges();
+				}
+				return true;
+			}
+			catch (Exception ex)
+			{
+				return false;
+			}
+		}
+		public bool ActualizarClientesXpoliza(int cd)
+		{
+			try
+			{
+				using (var db = new Model1())
+				{
+					var temp = db.ClientesXpolizas.ToList().Where(x => x.idUsuariosXpoliza == cd).FirstOrDefault();
+					temp.estado = false;
 					db.SaveChanges();
 				}
 				return true;

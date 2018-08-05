@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Seguros.Models.ClientesXpoliza>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Cliente.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Poliza.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InicioVigencia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estado)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cliente.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Poliza.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InicioVigencia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estado)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idUsuariosXpoliza }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idUsuariosXpoliza }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idUsuariosXpoliza })
+        </td>
+    </tr>
+}
+
+</table>

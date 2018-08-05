@@ -244,11 +244,11 @@
     <Content Include="Views\Clientes\Clientes.cshtml" />
     <Content Include="Views\Clientes\ListarCliente.cshtml" />
     <Content Include="Views\Clientes\EditarCliente.cshtml" />
-    <Content Include="Views\PolizasXcliente\ClientesXpoliza.cshtml" />
+    <Content Include="Views\ClientesXpoliza\ClientesXpoliza.cshtml" />
+    <Content Include="Views\ClientesXpoliza\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\ClientesXpoliza\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

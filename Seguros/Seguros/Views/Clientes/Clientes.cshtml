@@ -6,6 +6,28 @@
 
 @using (Html.BeginForm())
 {
+	<div class="navbar-collapse collapse">
+		<ul class="nav navbar-nav">
+			<li>
+				<a href="@Url.Action("Polizas", "Polizas")">
+					<span></span>
+					polizas
+				</a>
+			</li>
+			<li>
+				<a href="@Url.Action("Clientes", "Clientes")">
+					<span></span>
+					clientes
+				</a>
+			</li>
+			<li>
+				<a href="@Url.Action("ClientesXpoliza", "ClientesXpoliza")">
+					ClientesXpoliza
+				</a>
+			</li>
+		</ul>
+
+	</div>
 	@Html.AntiForgeryToken()
 	@Html.ActionLink("Listar Clientes", "ListarCliente")
 

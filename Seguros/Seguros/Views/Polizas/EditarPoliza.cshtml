@@ -7,7 +7,28 @@
 @using (Html.BeginForm())
 {
 	@Html.AntiForgeryToken()
+	<div class="navbar-collapse collapse">
+		<ul class="nav navbar-nav">
+			<li>
+				<a href="@Url.Action("Polizas", "Polizas")">
+					<span></span>
+					polizas
+				</a>
+			</li>
+			<li>
+				<a href="@Url.Action("Clientes", "Clientes")">
+					<span></span>
+					clientes
+				</a>
+			</li>
+			<li>
+				<a href="@Url.Action("ClientesXpoliza", "ClientesXpoliza")">
+					ClientesXpoliza
+				</a>
+			</li>
+		</ul>
 
+	</div>
 	<div class="form-horizontal">
 		<h4>Poliza</h4>
 		<hr />
@@ -92,7 +113,7 @@
 			var prec = $('#precio').val()
 
 			var JSONObject = { // Create JSON object to pass through AJAX
-				idPoliza:id,
+				idPoliza: id,
 				nombre: name,
 				descripcion: desc,
 				periodo: peri,

@@ -1,6 +1,8 @@
 ﻿@model Seguros.Models.Poliza
 
 @{
+	/**/
+
 	ViewBag.Title = "Polizas";
 }
 
@@ -11,6 +13,28 @@
 {
 	@Html.AntiForgeryToken()
 
+	<div class="navbar-collapse collapse">
+		<ul class="nav navbar-nav">
+			<li>
+				<a href="@Url.Action("Polizas", "Polizas")">
+					<span></span>
+					polizas
+				</a>
+			</li>
+			<li>
+				<a href="@Url.Action("Clientes", "Clientes")">
+					<span></span>
+					clientes
+				</a>
+			</li>
+			<li>
+				<a href="@Url.Action("ClientesXpoliza", "ClientesXpoliza")">
+					ClientesXpoliza
+				</a>
+			</li>
+		</ul>
+
+	</div>
 	<div class="form-horizontal">
 		<h4>Poliza</h4>
 		<hr />
@@ -75,13 +99,13 @@
 @section Scripts {
 	@Scripts.Render("~/bundles/jqueryval")
 	<script>
-	$('#BtnCrear').click(function () { //On click of your button
+		$('#BtnCrear').click(function () { //On click of your button
 
-		var name = $('#nombre').val();
-		var desc = $('#descripcion').val();
-		var peri = $('#periodo').val();
-		var riesgo = $('#CbidRiesgo').val();
-		var prec = $('#precio').val()
+			var name = $('#nombre').val();
+			var desc = $('#descripcion').val();
+			var peri = $('#periodo').val();
+			var riesgo = $('#CbidRiesgo').val();
+			var prec = $('#precio').val()
 
 			var JSONObject = { // Create JSON object to pass through AJAX
 				nombre: name,
@@ -98,10 +122,10 @@
 				data: JSON.stringify(JSONObject),
 				contentType: "application/json; charset=utf-8",
 				dataType: "json"
-		});
-		
-		
-		return View("ListarPolizas");
+			});
+
+
+			return View("ListarPolizas");
 		});
 	</script>
 }

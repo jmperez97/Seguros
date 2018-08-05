@@ -7,7 +7,28 @@
 @using (Html.BeginForm())
 {
 	@Html.AntiForgeryToken()
+	<div class="navbar-collapse collapse">
+		<ul class="nav navbar-nav">
+			<li>
+				<a href="@Url.Action("Polizas", "Polizas")">
+					<span></span>
+					polizas
+				</a>
+			</li>
+			<li>
+				<a href="@Url.Action("Clientes", "Clientes")">
+					<span></span>
+					clientes
+				</a>
+			</li>
+			<li>
+				<a href="@Url.Action("ClientesXpoliza", "ClientesXpoliza")">
+					ClientesXpoliza
+				</a>
+			</li>
+		</ul>
 
+	</div>
 	<div class="form-horizontal">
 		<h4>Cliente</h4>
 		<hr />
@@ -55,7 +76,7 @@
 }
 
 <div>
-	@Html.ActionLink("Back to List", "ListarClientes")
+	@Html.ActionLink("Back to List", "ListarCliente")
 </div>
 
 @section Scripts {
@@ -68,7 +89,7 @@
 			var cel = $('#Telefono').val();
 
 			var JSONObject = { // Create JSON object to pass through AJAX
-				idCliente:id,
+				idCliente: id,
 				Cedula: ced,
 				Nombre: name,
 				Telefono: cel

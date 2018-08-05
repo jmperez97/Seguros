@@ -1,13 +1,31 @@
 ﻿@model IEnumerable<Seguros.Models.Poliza>
 
-<p>
-	@Html.ActionLink("Crear poliza", "Polizas")
-	@Html.ActionLink("Crear cliente", "Clientes", "Clientes")
-</p>
+<div class="navbar-collapse collapse">
+	<ul class="nav navbar-nav">
+		<li>
+			<a href="@Url.Action("Polizas", "Polizas")">
+				<span></span>
+				polizas
+			</a>
+		</li>
+		<li>
+			<a href="@Url.Action("Clientes", "Clientes")">
+				<span></span>
+				clientes
+			</a>
+		</li>
+		<li>
+			<a href="@Url.Action("ClientesXpoliza", "ClientesXpoliza")">
+				ClientesXpoliza
+			</a>
+		</li>
+	</ul>
+
+</div>
 <table class="table">
 	<tr>
 		<th>
-			
+
 			@Html.DisplayNameFor(model => model.idPoliza)
 		</th>
 		<th>
@@ -30,32 +48,32 @@
 
 	@foreach (var item in Model)
 	{
-	<tr>
-		<td id="tdPoliza">
-			@Html.DisplayFor(modelItem => item.idPoliza)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.Riesgo.nivel)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.nombre)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.descripcion)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.periodo)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.precio)
-		</td>
-		<td>
-			@*<button id="Btneditar" onclick="editarPoliza" >Editar</button>|*@
-			@Html.ActionLink("Editar", "EditarPoliza", new { id = item.idPoliza }) 
+		<tr>
+			<td id="tdPoliza">
+				@Html.DisplayFor(modelItem => item.idPoliza)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Riesgo.nivel)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.nombre)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.descripcion)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.periodo)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.precio)
+			</td>
+			<td>
+				@*<button id="Btneditar" onclick="editarPoliza" >Editar</button>|*@
+				@Html.ActionLink("Editar", "EditarPoliza", new { id = item.idPoliza })
 
-			
-		</td>
-	</tr>
+
+			</td>
+		</tr>
 	}
 
 </table>
